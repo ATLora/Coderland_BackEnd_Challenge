@@ -1,0 +1,6 @@
+@Coderland_BackEnd_Challenge_HostAddress = http://localhost:5090
+
+GET {{Coderland_BackEnd_Challenge_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
