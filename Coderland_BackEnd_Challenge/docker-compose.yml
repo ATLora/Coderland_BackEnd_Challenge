@@ -1,0 +1,28 @@
+﻿version: '3.4'
+
+services:
+  db:
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: panda2011
+      POSTGRES_DB: MarcasAutosDB
+    ports:
+      - "5432:5432"
+    networks:
+      - backend  # Añadir esta línea para asegurarte de que 'db' esté en la red 'backend'
+
+  api:
+    build: .
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
